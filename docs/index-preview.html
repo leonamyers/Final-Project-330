@@ -1,62 +1,151 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="generator" content="quarto-1.5.57">
 
-<meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.57">
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
-
-<title>ESS 330 Final Project</title>
-<style>
-code{white-space: pre-wrap;}
-span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
-div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-ul.task-list{list-style: none;}
-ul.task-list li input[type="checkbox"] {
-  width: 0.8em;
-  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
-  vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-</style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
+    <title>ESS 330 Final Project</title>
+    <style>
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      div.columns{display: flex; gap: min(4vw, 1.5em);}
+      div.column{flex: auto; overflow-x: auto;}
+      div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+      ul.task-list{list-style: none;}
+      ul.task-list li input[type="checkbox"] {
+        width: 0.8em;
+        margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+        vertical-align: middle;
+      }
+      /* CSS for syntax highlighting */
+      pre > code.sourceCode { white-space: pre; position: relative; }
+      pre > code.sourceCode > span { line-height: 1.25; }
+      pre > code.sourceCode > span:empty { height: 1.2em; }
+      .sourceCode { overflow: visible; }
+      code.sourceCode > span { color: inherit; text-decoration: inherit; }
+      div.sourceCode { margin: 1em 0; }
+      pre.sourceCode { margin: 0; }
+      @media screen {
+      div.sourceCode { overflow: auto; }
+      }
+      @media print {
+      pre > code.sourceCode { white-space: pre-wrap; }
+      pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+      }
+      pre.numberSource code
+        { counter-reset: source-line 0; }
+      pre.numberSource code > span
+        { position: relative; left: -4em; counter-increment: source-line; }
+      pre.numberSource code > span > a:first-child::before
+        { content: counter(source-line);
+          position: relative; left: -1em; text-align: right; vertical-align: baseline;
+          border: none; display: inline-block;
+          -webkit-touch-callout: none; -webkit-user-select: none;
+          -khtml-user-select: none; -moz-user-select: none;
+          -ms-user-select: none; user-select: none;
+          padding: 0 4px; width: 4em;
+        }
+      pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+      div.sourceCode
+        {   }
+      @media screen {
+      pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+      }
+    </style>
+
+    <style>
+      body.hypothesis-enabled #quarto-embed-header {
+        padding-right: 36px;
+      }
+
+      #quarto-embed-header {
+        height: 3em;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: solid 1px;
+      }
+
+      #quarto-embed-header h6 {
+        font-size: 1.1em;
+        padding-top: 0.6em;
+        margin-left: 1em;
+        margin-right: 1em;
+        font-weight: 400;
+      }
+
+      #quarto-embed-header a.quarto-back-link,
+      #quarto-embed-header a.quarto-download-embed {
+        font-size: 0.8em;
+        margin-top: 1em;
+        margin-bottom: 1em;
+        margin-left: 1em;
+        margin-right: 1em;
+      }
+
+      .quarto-back-container {
+        padding-left: 0.5em;
+        display: flex;
+      }
+
+      .headroom {
+          will-change: transform;
+          transition: transform 200ms linear;
+      }
+
+      .headroom--pinned {
+          transform: translateY(0%);
+      }
+
+      .headroom--unpinned {
+          transform: translateY(-100%);
+      }      
+    </style>
+
+    <script>
+    window.document.addEventListener("DOMContentLoaded", function () {
+
+      var header = window.document.querySelector("#quarto-embed-header");
+      const titleBannerEl = window.document.querySelector("body > #title-block-header");
+      if (titleBannerEl) {
+        titleBannerEl.style.paddingTop = header.clientHeight + "px";
+      }
+      const contentEl = window.document.getElementById('quarto-content');
+      for (const child of contentEl.children) {
+        child.style.paddingTop = header.clientHeight + "px";
+        child.style.marginTop = "1em";
+      }
+
+      // Use the article root if the `back` call doesn't work. This isn't perfect
+      // but should typically work
+      window.quartoBackToArticle = () => {
+        var currentUrl = window.location.href;
+        window.history.back();
+        setTimeout(() => {
+            // if location was not changed in 100 ms, then there is no history back
+            if(currentUrl === window.location.href){              
+                // redirect to site root
+                window.location.href = "index.html";
+            }
+        }, 100);
+      }
+
+      const headroom = new window.Headroom(header, {
+        tolerance: 5,
+        onPin: function () {
+        },
+        onUnpin: function () {
+        },
+      });
+      headroom.init();
+    });
+    </script>
+
+    
+<script src="site_libs/manuscript-notebook/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -70,24 +159,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
 <link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
-<script async="" src="https://hypothes.is/embed.js"></script>
+     <script async="" src="https://hypothes.is/embed.js"></script>
 <script>
   window.document.addEventListener("DOMContentLoaded", function (_event) {
     document.body.classList.add('hypothesis-enabled');
   });
-</script>
-
-
-<meta name="citation_title" content="ESS 330 Final Project">
+</script>  
+      <meta name="citation_title" content="ESS 330 Final Project">
 <meta name="citation_author" content="Leona Myers">
 <meta name="citation_author" content="Andie Hall">
 <meta name="citation_language" content="en">
 <meta name="citation_reference" content="citation_title=Literate programming;,citation_author=Donald E. Knuth;,citation_publication_date=1984-05;,citation_cover_date=1984-05;,citation_year=1984;,citation_fulltext_html_url=https://doi.org/10.1093/comjnl/27.2.97;,citation_issue=2;,citation_doi=10.1093/comjnl/27.2.97;,citation_issn=0010-4620;,citation_volume=27;,citation_journal_title=Comput. J.;,citation_publisher=Oxford University Press, Inc.;">
 </head>
 
-<body>
+  <body class="quarto-notebook">
+    <div id="quarto-embed-header" class="headroom fixed-top bg-primary">
+      
+      <a onclick="window.quartoBackToArticle(); return false;" class="btn btn-primary quarto-back-link" href=""><i class="bi bi-caret-left"></i> Back to Article</a>
+      <h6><i class="bi bi-journal-code"></i> Article Notebook</h6>
 
-<header id="title-block-header" class="quarto-title-block default toc-left page-columns page-full">
+            <a href="./index.qmd" class="btn btn-primary quarto-download-embed" download="index.qmd">Download Source</a>
+          </div>
+
+     <header id="title-block-header" class="quarto-title-block default toc-left page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
       <h1 class="title">ESS 330 Final Project</h1>
@@ -126,7 +220,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
               </div>
       </div>
       <div class="quarto-title-meta-column-end quarto-other-formats-target">
-      <div class="quarto-alternate-formats"><div class="quarto-title-meta-heading">Other Formats</div><div class="quarto-title-meta-contents"><p><a href="index.docx"><i class="bi bi-file-word"></i>MS Word</a></p></div><div class="quarto-title-meta-contents"><p><a href="index-meca.zip" data-meca-link="true"><i class="bi bi-archive"></i>MECA Bundle</a></p></div></div></div>
+      </div>
     </div>
 
 
@@ -152,18 +246,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   </ul></li>
   </ul>
-<div class="quarto-alternate-notebooks"><h2>Notebooks</h2><ul><li><a href="index-preview.html"><i class="bi bi-journal-code"></i>Article Notebook</a></li></ul></div></nav>
+</nav>
 </div>
 <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
 </div>
-<main class="content quarto-banner-title-block" id="quarto-document-content">
+<main class="content quarto-banner-title-block" id="quarto-document-content">      
 
-
-
-  
-
-
-<section id="stage-2" class="level1">
+       <section id="stage-2" class="level1">
 <h1>Stage 2:</h1>
 <section id="title" class="level2">
 <h2 class="anchored" data-anchor-id="title">Title</h2>
@@ -217,9 +306,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="exploring-the-data" class="level2">
 <h2 class="anchored" data-anchor-id="exploring-the-data">Exploring the Data</h2>
-<div class="cell">
+<div class="cell-container"><div class="cell-decorator"><pre>In [1]:</pre></div><div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr hidden">
+<div class="cell-output cell-output-stderr">
 <pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
 ✔ dplyr     1.1.4     ✔ readr     2.1.5
 ✔ forcats   1.0.0     ✔ stringr   1.5.1
@@ -232,16 +321,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr hidden">
+<div class="cell-output cell-output-stderr">
 <pre><code>here() starts at C:/Users/myersl3/OneDrive - Rensselaer Polytechnic Institute/Documents/leonamyers/github/Final-Project-330</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<a class="quarto-notebook-link" id="nblink-1" href="index-preview.html">Source: Article Notebook</a></div>
+</div></div>
 <p>CO2 data:</p>
 <p>Description: The dataset spans 54 years, from 1966 to the most recent year available. Each entry includes the total CO₂ emissions for North America in a given year. No cleaning is needed.</p>
-<div class="cell">
+<div class="cell-container"><div class="cell-decorator"><pre>In [2]:</pre></div><div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>co2_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"annual-co2-emissions-per-country.csv"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr hidden">
+<div class="cell-output cell-output-stderr">
 <pre><code>Rows: 54 Columns: 4
 ── Column specification ────────────────────────────────────────────────────────
 Delimiter: ","
@@ -252,8 +341,8 @@ lgl (1): Code
 ℹ Use `spec()` to retrieve the full column specification for this data.
 ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 </div>
-</div>
-<div class="cell">
+</div></div>
+<div class="cell-container"><div class="cell-decorator"><pre>In [3]:</pre></div><div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(co2_data, <span class="fu">aes</span>(<span class="at">x =</span> Year, <span class="at">y =</span> <span class="st">`</span><span class="at">Annual CO₂ emissions</span><span class="st">`</span>)) <span class="sc">+</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">color =</span> <span class="st">"darkred"</span>, <span class="at">size =</span> <span class="fl">1.2</span>) <span class="sc">+</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"black"</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
@@ -263,24 +352,24 @@ lgl (1): Code
 <span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Total CO₂ Emissions (metric tons)"</span></span>
 <span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
 <span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">14</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr hidden">
+<div class="cell-output cell-output-stderr">
 <pre><code>Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
 ℹ Please use `linewidth` instead.</code></pre>
 </div>
 <div class="cell-output-display">
-<div>
+<div class="">
 <figure class="figure">
-<p><a href="index_files/figure-html/unnamed-chunk-3-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></a></p>
+<p class=""><a href="index_files/figure-html/unnamed-chunk-3-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></a></p>
 </figure>
 </div>
 </div>
-</div>
+</div></div>
 <section id="ebird-data" class="level3">
 <h3 class="anchored" data-anchor-id="ebird-data">eBird Data:</h3>
 <p>Description: The data includes Woodthrush observations from the United States in Pennsylvania, West Virginia, Virginia, Kentucky, Ohio, Indiana, Tennessee, recorded at different levels of granularity. The observations span from 1966 to 2019. There is additional information on the number of individuals observed, location, and behavioral codes. Some cleaning was done to filter for specific locations.</p>
-<div class="cell">
+<div class="cell-container"><div class="cell-decorator"><pre>In [4]:</pre></div><div class="cell">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>woodthrush_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"Wood_Thrush.csv"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr hidden">
+<div class="cell-output cell-output-stderr">
 <pre><code>New names:
 Rows: 301512 Columns: 27
 ── Column specification
@@ -310,8 +399,8 @@ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 • `` -&gt; `...26`
 • `` -&gt; `...27`</code></pre>
 </div>
-</div>
-<div class="cell">
+</div></div>
+<div class="cell-container"><div class="cell-decorator"><pre>In [5]:</pre></div><div class="cell">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -323,14 +412,14 @@ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 <span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
 <span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(year) <span class="sc">%&gt;%</span></span>
 <span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">total_observations =</span> <span class="fu">sum</span>(<span class="st">`</span><span class="at">OBSERVATION COUNT</span><span class="st">`</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr hidden">
+<div class="cell-output cell-output-stderr">
 <pre><code>Warning: There was 1 warning in `mutate()`.
 ℹ In argument: `OBSERVATION COUNT = as.numeric(`OBSERVATION COUNT`)`.
 Caused by warning:
 ! NAs introduced by coercion</code></pre>
 </div>
-</div>
-<div class="cell">
+</div></div>
+<div class="cell-container"><div class="cell-decorator"><pre>In [6]:</pre></div><div class="cell">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>first_observation <span class="ot">&lt;-</span> woodthrush_data <span class="sc">%&gt;%</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">observation_date =</span> <span class="fu">mdy</span>(<span class="st">`</span><span class="at">OBSERVATION DATE</span><span class="st">`</span>),  </span>
@@ -362,16 +451,16 @@ Caused by warning:
 <span id="cb14-29"><a href="#cb14-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">16</span>, <span class="at">face =</span> <span class="st">"bold"</span>, <span class="at">hjust =</span> <span class="fl">0.5</span>)</span>
 <span id="cb14-30"><a href="#cb14-30" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div>
+<div class="">
 <figure class="figure">
-<p><a href="index_files/figure-html/unnamed-chunk-6-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="index_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></a></p>
+<p class=""><a href="index_files/figure-html/unnamed-chunk-6-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="index_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></a></p>
 </figure>
 </div>
 </div>
-</div>
+</div></div>
 <section id="test-linear-regression" class="level4">
 <h4 class="anchored" data-anchor-id="test-linear-regression">Test: Linear Regression</h4>
-<div class="cell">
+<div class="cell-container"><div class="cell-decorator"><pre>In [7]:</pre></div><div class="cell">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">lm</span>(DayOfYear <span class="sc">~</span> observation_year, <span class="at">data =</span> first_observation)</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -394,16 +483,16 @@ Residual standard error: 20.54 on 52 degrees of freedom
 Multiple R-squared:  0.04901,   Adjusted R-squared:  0.03072 
 F-statistic:  2.68 on 1 and 52 DF,  p-value: 0.1077</code></pre>
 </div>
-</div>
+</div></div>
 <p>Results: The analysis suggests a slight trend toward Wood Thrushes arriving slightly earlier over time (about 0.29 days per year), but this trend is not statistically significant (p = 0.1077).</p>
 </section>
 </section>
 <section id="climateweather-data" class="level3">
 <h3 class="anchored" data-anchor-id="climateweather-data">Climate/Weather Data:</h3>
 <p>Description: This data set contains the annual average temperature records for the states of Pennsylvania, West Virginia, Virginia, Kentucky, Ohio, Indiana, and Tennessee, from 1966-2019. It includes monthly temperature data for each year, from January through December, along with an annual average temperature. This data set was heavily cleaned in excel.</p>
-<div class="cell">
+<div class="cell-container"><div class="cell-decorator"><pre>In [8]:</pre></div><div class="cell">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>weather_data <span class="ot">&lt;-</span>  <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"AllWeatherData.csv"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr hidden">
+<div class="cell-output cell-output-stderr">
 <pre><code>Rows: 378 Columns: 15
 ── Column specification ────────────────────────────────────────────────────────
 Delimiter: ","
@@ -413,10 +502,10 @@ dbl (14): Year, Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec, ...
 ℹ Use `spec()` to retrieve the full column specification for this data.
 ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 </div>
-</div>
+</div></div>
 <section id="test-linear-regression-1" class="level4">
 <h4 class="anchored" data-anchor-id="test-linear-regression-1">Test: linear regression</h4>
-<div class="cell">
+<div class="cell-container"><div class="cell-decorator"><pre>In [9]:</pre></div><div class="cell">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
@@ -454,16 +543,14 @@ Residual standard error: 37.69 on 4534 degrees of freedom
 Multiple R-squared:  0.001811,  Adjusted R-squared:  0.00159 
 F-statistic: 8.224 on 1 and 4534 DF,  p-value: 0.004152</code></pre>
 </div>
-</div>
+</div></div>
 <p>Results: Our results indicate a statistically significant warming trend over time, with temperatures increasing by ~0.10 degrees per year.</p>
 </section>
 </section>
 </section>
 </section>
-
-</main>
-<!-- /main column -->
-<script id="quarto-html-after-body" type="application/javascript">
+     </main>
+<!-- /main column -->  <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -882,9 +969,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
-</script>
-</div> <!-- /content -->
-<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","openEffect":"zoom","selector":".lightbox","loop":false,"descPosition":"bottom"});
+</script>  </div> <!-- /content -->  <script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","openEffect":"zoom","descPosition":"bottom","loop":false,"selector":".lightbox"});
 (function() {
   let previousOnload = window.onload;
   window.onload = () => {
@@ -915,9 +1000,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   };
   
 })();
-          </script>
-
-
-
-
+          </script> 
+  
 </body></html>

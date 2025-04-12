@@ -17,20 +17,31 @@ and Interchange DTD v1.2 20190208//EN" "JATS-archivearticle1.dtd">
 <contrib-group>
 <contrib contrib-type="author" corresp="yes">
 <name>
-<surname>Jones</surname>
-<given-names>Norah</given-names>
+<surname>Myers</surname>
+<given-names>Leona</given-names>
 </name>
-<string-name>Norah Jones</string-name>
+<string-name>Leona Myers</string-name>
 
 <role vocab="https://credit.niso.org" vocab-term="writing – original
 draft" vocab-term-identifier="https://credit.niso.org/contributor-roles/writing-original-draft/">writing</role>
 <xref ref-type="aff" rid="aff-1">a</xref>
 <xref ref-type="corresp" rid="cor-1">&#x002A;</xref>
 </contrib>
+<contrib contrib-type="author">
+<name>
+<surname>Hall</surname>
+<given-names>Andie</given-names>
+</name>
+<string-name>Andie Hall</string-name>
+
+<role vocab="https://credit.niso.org" vocab-term="writing – original
+draft" vocab-term-identifier="https://credit.niso.org/contributor-roles/writing-original-draft/">writing</role>
+<xref ref-type="aff" rid="aff-1">a</xref>
+</contrib>
 </contrib-group>
 <aff id="aff-1">
 <institution-wrap>
-<institution>The University</institution>
+<institution>Colorado State University</institution>
 </institution-wrap>
 
 
@@ -64,39 +75,809 @@ draft" vocab-term-identifier="https://credit.niso.org/contributor-roles/writing-
 </front>
 
 <body>
-<sec id="section">
-  <title>Section</title>
-  <p>This is a simple placeholder for the manuscript’s main document
-  (<xref alt="Knuth 1984" rid="ref-knuth84" ref-type="bibr">Knuth
-  1984</xref>).</p>
+<sec id="stage-2">
+  <title>Stage 2:</title>
+  <sec id="title">
+    <title>Title</title>
+    <p>Title: Climate Change and Avian Response: Assessing the Effects
+    of CO₂ and Temperature on Wood Thrush Populations</p>
+  </sec>
+  <sec id="introduction-background-and-motivation">
+    <title>Introduction, Background, and Motivation</title>
+    <p>Problem Overview: In recent decades, global climate change,
+    driven by increased carbon dioxide emissions, has contributed to
+    rising temperatures and disrupted ecological systems. Migratory bird
+    species, Wood Thrush (Hylocichla mustelina), are particularly
+    vulnerable to these changes due to their reliance on specific
+    environmental cues for migration, breeding, and survival. The Wood
+    Thursh is included on the Yellow Watch List for birds most at risk
+    of extinction, and it is one of the most prominent examples of
+    declining forest songbirds in North America (Cornell Lab of
+    Orinithology). Populations have declined by 1.3% per year, resulting
+    in a cumulative decline of approximately 5% between 1966 and 2019
+    (Cornell Lab of Ornithology). Declines in Wood Thrush populations
+    have been observed across North America, yet the extent to which
+    atmospheric CO2 levels and associated temperature changes contribute
+    to these declines remains unclear.</p>
+    <p>Data Overview: This research will investigate the effects of
+    rising atmospheric CO₂ concentrations and temperature changes on the
+    population dynamics of the Wood Thrush (Hylocichla mustelina), a
+    migratory songbird of conservation concern. The study will integrate
+    climate and ecological data from multiple large-scale sources:
+    temperature records from the National Weather Service, bird
+    abundance and distribution data from eBird and the North American
+    Breeding Bird Survey (BBS), and atmospheric CO₂ data from the Global
+    Carbon Budget.</p>
+  </sec>
+  <sec id="methods-overview">
+    <title>Methods Overview:</title>
+    <list list-type="order">
+      <list-item>
+        <p>Data acquisition</p>
+        <list list-type="order">
+          <list-item>
+            <p>Climate Data: National Weather Service</p>
+          </list-item>
+          <list-item>
+            <p>CO₂ Data: Global Carbon Budget</p>
+          </list-item>
+          <list-item>
+            <p>Bird Observation Data: Cornell Lab’s eBird dataset</p>
+          </list-item>
+        </list>
+      </list-item>
+      <list-item>
+        <p>Data Cleaning and Processing</p>
+        <list list-type="order">
+          <list-item>
+            <p>Imported 7 different datasets from the states above that
+            recorded annual temperatures for each month between 1966 and
+            2019 and combined into one large dataset,
+            “All_Weather_Data.csv” </p>
+            <list list-type="order">
+              <list-item>
+                <p>Difficulties: The data was extremely time-consuming
+                to clean and process into a large dataset due to the
+                website’s pdf format for data exports. Using Excel’s
+                data from the file helped to import the data and allowed
+                for processing and cleaning of the data before being
+                inserted into the rProject data directory. </p>
+              </list-item>
+            </list>
+          </list-item>
+          <list-item>
+            <p>CO2 data was downloaded from the Global Carbon Budget and
+            then uploaded to Rstudio. No additional cleaning was
+            needed.</p>
+            <list list-type="order">
+              <list-item>
+                <p>Difficulties may arise from this data set only
+                including annual emission while other data sets include
+                monthly data.</p>
+              </list-item>
+            </list>
+          </list-item>
+          <list-item>
+            <p>Filtered Wood Thrush eBird data to between the years of
+            1966 and 2019, along with filtering the location of the bird
+            to these specific states: Pennsylvania, West Virginia,
+            Virginia, Kentucky, Ohio, Indiana, and Tennessee.
+            “Wood_Thrush_Raw.csv”</p>
+            <list list-type="order">
+              <list-item>
+                <p>Difficulties: The dataset is about 131.5 MB and
+                cannot be uploaded to the git repository, meaning data
+                sharing had to be done via email rather than sharing the
+                actual repo for us to pull and push. </p>
+              </list-item>
+            </list>
+          </list-item>
+        </list>
+      </list-item>
+    </list>
+    <list list-type="order">
+      <list-item>
+        <label>3.</label>
+        <p>Statistical Analysis</p>
+        <list list-type="order">
+          <list-item>
+            <p>Using the multiple datasets to account for temperature,
+            CO2, and observations, we created multiple machine learning
+            models (Linear Regression and Random Forest) to identify the
+            model of best fit. Creating a separate database to identify
+            the first observations of the Wood Thrush per year with a
+            correlation between the average temperature for that month
+            of the year with the first observation of that year can help
+            model the correlation between average temperatures and the
+            arrival date the species. </p>
+          </list-item>
+        </list>
+      </list-item>
+      <list-item>
+        <label>4.</label>
+        <p>Visualization</p>
+        <list list-type="order">
+          <list-item>
+            <p>Creating plots for the relationship between CO2,
+            Temperature, and Observations includes a scatter plot to
+            identify where bird observations (based on DayofYear) align
+            with average temperatures for specific time periods. </p>
+          </list-item>
+        </list>
+      </list-item>
+    </list>
+  </sec>
+  <sec id="citations">
+    <title>Citations</title>
+    <p>Cornell Lab of Ornithology. (n.d.). Wood Thrush Life History, All
+    About Birds. All About Birds. Retrieved April 10, 2025, from
+    https://www.allaboutbirds.org/guide/Wood_Thrush/lifehistory</p>
+  </sec>
+  <sec id="exploring-the-data">
+    <title>Exploring the Data</title>
+    <code language="r script">library(tidyverse)</code>
+    <preformat>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.4     ✔ readr     2.1.5
+✔ forcats   1.0.0     ✔ stringr   1.5.1
+✔ ggplot2   3.5.1     ✔ tibble    3.2.1
+✔ lubridate 1.9.4     ✔ tidyr     1.3.1
+✔ purrr     1.0.2     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</preformat>
+    <code language="r script">library(here)</code>
+    <preformat>here() starts at C:/Users/myersl3/OneDrive - Rensselaer Polytechnic Institute/Documents/leonamyers/github/Final-Project-330</preformat>
+    <code language="r script">library(readr)</code>
+    <p>CO2 data:</p>
+    <p>Description: The dataset spans 54 years, from 1966 to the most
+    recent year available. Each entry includes the total CO₂ emissions
+    for North America in a given year. No cleaning is needed.</p>
+    <code language="r script">co2_data &lt;- read_csv(here(&quot;data&quot;, &quot;annual-co2-emissions-per-country.csv&quot;))</code>
+    <preformat>Rows: 54 Columns: 4
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: &quot;,&quot;
+chr (1): Entity
+dbl (2): Year, Annual CO₂ emissions
+lgl (1): Code
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</preformat>
+    <code language="r script">ggplot(co2_data, aes(x = Year, y = `Annual CO₂ emissions`)) +
+  geom_line(color = &quot;darkred&quot;, size = 1.2) +
+  geom_point(color = &quot;black&quot;, size = 2) +
+  labs(
+    title = &quot;Total CO₂ Emissions in the US&quot;,
+    x = &quot;Year&quot;,
+    y = &quot;Total CO₂ Emissions (metric tons)&quot;
+  ) +
+  theme_minimal(base_size = 14)</code>
+    <preformat>Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
+ℹ Please use `linewidth` instead.</preformat>
+    <graphic mimetype="image" mime-subtype="png" xlink:href="index_files/figure-jats/unnamed-chunk-3-1.png" />
+    <sec id="ebird-data">
+      <title>eBird Data:</title>
+      <p>Description: The data includes Woodthrush observations from the
+      United States in Pennsylvania, West Virginia, Virginia, Kentucky,
+      Ohio, Indiana, Tennessee, recorded at different levels of
+      granularity. The observations span from 1966 to 2019. There is
+      additional information on the number of individuals observed,
+      location, and behavioral codes. Some cleaning was done to filter
+      for specific locations.</p>
+      <code language="r script">woodthrush_data &lt;- read_csv(here(&quot;data&quot;, &quot;Wood_Thrush.csv&quot;))</code>
+      <preformat>New names:
+Rows: 301512 Columns: 27
+── Column specification
+──────────────────────────────────────────────────────── Delimiter: &quot;,&quot; chr
+(6): COUNTRY, COUNTRY CODE, STATE, COUNTY, OBSERVATION COUNT, OBSERVATI... dbl
+(2): LATITUDE, LONGITUDE lgl (19): ...6, ...10, ...11, ...12, ...13, ...14,
+...15, ...16, ...17, ...1...
+ℹ Use `spec()` to retrieve the full column specification for this data. ℹ
+Specify the column types or set `show_col_types = FALSE` to quiet this message.
+• `` -&gt; `...6`
+• `` -&gt; `...10`
+• `` -&gt; `...11`
+• `` -&gt; `...12`
+• `` -&gt; `...13`
+• `` -&gt; `...14`
+• `` -&gt; `...15`
+• `` -&gt; `...16`
+• `` -&gt; `...17`
+• `` -&gt; `...18`
+• `` -&gt; `...19`
+• `` -&gt; `...20`
+• `` -&gt; `...21`
+• `` -&gt; `...22`
+• `` -&gt; `...23`
+• `` -&gt; `...24`
+• `` -&gt; `...25`
+• `` -&gt; `...26`
+• `` -&gt; `...27`</preformat>
+      <code language="r script">library(dplyr)
+library(lubridate)
+
+woodthrush_yearly &lt;- woodthrush_data %&gt;%
+  mutate(
+    observation_date = mdy(`OBSERVATION DATE`),  
+    year = year(observation_date),
+    `OBSERVATION COUNT` = as.numeric(`OBSERVATION COUNT`)  
+  ) %&gt;%
+  group_by(year) %&gt;%
+  summarize(total_observations = sum(`OBSERVATION COUNT`, na.rm = TRUE))</code>
+      <preformat>Warning: There was 1 warning in `mutate()`.
+ℹ In argument: `OBSERVATION COUNT = as.numeric(`OBSERVATION COUNT`)`.
+Caused by warning:
+! NAs introduced by coercion</preformat>
+      <code language="r script">first_observation &lt;- woodthrush_data %&gt;%
+  mutate(
+    observation_date = mdy(`OBSERVATION DATE`),  
+    observation_year = year(observation_date)
+  ) %&gt;%
+  group_by(observation_year) %&gt;%
+  slice_min(observation_date, with_ties = FALSE) %&gt;%
+  mutate(
+    DayOfYear = yday(observation_date)
+  )
+
+ggplot(first_observation, aes(x = observation_year, y = DayOfYear)) +
+  geom_point(aes(color = observation_year), size = 3, alpha = 0.7) +
+  geom_line(color = &quot;black&quot;, alpha = 0.3, size = 1.2) + 
+  scale_color_viridis_c(option = &quot;magma&quot;, begin = 0.2, end = 0.8) + 
+  scale_y_continuous(
+    breaks = seq(0, 365, by = 30),
+    labels = function(x) format(as.Date(x, origin = &quot;1970-01-01&quot;), &quot;%b %d&quot;)
+  ) +
+  labs(
+    x = &quot;Year&quot;, 
+    y = &quot;Day of Year (First Observation)&quot;, 
+    title = &quot;First Wood Thrush Observation per Year&quot;
+  ) +
+  theme_minimal() +
+  theme(
+    legend.position = &quot;right&quot;, 
+    text = element_text(size = 14), 
+    plot.title = element_text(size = 16, face = &quot;bold&quot;, hjust = 0.5)
+  )</code>
+      <graphic mimetype="image" mime-subtype="png" xlink:href="index_files/figure-jats/unnamed-chunk-6-1.png" />
+      <sec id="test-linear-regression">
+        <title>Test: Linear Regression</title>
+        <code language="r script">model &lt;- lm(DayOfYear ~ observation_year, data = first_observation)
+summary(model)</code>
+        <preformat>
+Call:
+lm(formula = DayOfYear ~ observation_year, data = first_observation)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-94.378   1.369   5.287   8.700  13.841 
+
+Coefficients:
+                 Estimate Std. Error t value Pr(&gt;|t|)  
+(Intercept)      677.1175   357.3052   1.895   0.0636 .
+observation_year  -0.2935     0.1793  -1.637   0.1077  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 20.54 on 52 degrees of freedom
+Multiple R-squared:  0.04901,   Adjusted R-squared:  0.03072 
+F-statistic:  2.68 on 1 and 52 DF,  p-value: 0.1077</preformat>
+        <p>Results: The analysis suggests a slight trend toward Wood
+        Thrushes arriving slightly earlier over time (about 0.29 days
+        per year), but this trend is not statistically significant (p =
+        0.1077).</p>
+      </sec>
+    </sec>
+    <sec id="climateweather-data">
+      <title>Climate/Weather Data:</title>
+      <p>Description: This data set contains the annual average
+      temperature records for the states of Pennsylvania, West Virginia,
+      Virginia, Kentucky, Ohio, Indiana, and Tennessee, from 1966-2019.
+      It includes monthly temperature data for each year, from January
+      through December, along with an annual average temperature. This
+      data set was heavily cleaned in excel.</p>
+      <code language="r script">weather_data &lt;-  read_csv(here(&quot;data&quot;, &quot;AllWeatherData.csv&quot;))</code>
+      <preformat>Rows: 378 Columns: 15
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: &quot;,&quot;
+chr  (1): STATE
+dbl (14): Year, Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec, ...
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</preformat>
+      <sec id="test-linear-regression-1">
+        <title>Test: linear regression</title>
+        <code language="r script">library(dplyr)
+library(tidyr)
+library(ggplot2)
+
+weather_long &lt;- weather_data %&gt;%
+  pivot_longer(
+    cols = Jan:Dec,
+    names_to = &quot;Month&quot;,
+    values_to = &quot;Temp&quot;
+  ) %&gt;%
+  mutate(
+    Month = factor(Month, levels = month.abb),
+    Year = as.numeric(Year),
+    Temp = as.numeric(Temp)
+  )
+temp_trend &lt;- lm(Temp ~ Year, data = weather_long)
+summary(temp_trend)</code>
+        <preformat>
+Call:
+lm(formula = Temp ~ Year, data = weather_long)
+
+Residuals:
+   Min     1Q Median     3Q    Max 
+-44.20 -15.85  -1.25  13.18 760.29 
+
+Coefficients:
+              Estimate Std. Error t value Pr(&gt;|t|)   
+(Intercept) -149.17947   71.54617  -2.085  0.03712 * 
+Year           0.10297    0.03591   2.868  0.00415 **
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 37.69 on 4534 degrees of freedom
+Multiple R-squared:  0.001811,  Adjusted R-squared:  0.00159 
+F-statistic: 8.224 on 1 and 4534 DF,  p-value: 0.004152</preformat>
+        <p>Results: Our results indicate a statistically significant
+        warming trend over time, with temperatures increasing by ~0.10
+        degrees per year.</p>
+      </sec>
+    </sec>
+  </sec>
 </sec>
 </body>
 
 <back>
-<ref-list>
-  <title></title>
-  <ref id="ref-knuth84">
-    <element-citation publication-type="article-journal">
-      <person-group person-group-type="author">
-        <name><surname>Knuth</surname><given-names>Donald E.</given-names></name>
-      </person-group>
-      <article-title>Literate programming</article-title>
-      <source>Comput. J.</source>
-      <publisher-name>Oxford University Press, Inc.</publisher-name>
-      <publisher-loc>USA</publisher-loc>
-      <year iso-8601-date="1984-05">1984</year><month>05</month>
-      <volume>27</volume>
-      <issue>2</issue>
-      <issn>0010-4620</issn>
-      <uri>https://doi.org/10.1093/comjnl/27.2.97</uri>
-      <pub-id pub-id-type="doi">10.1093/comjnl/27.2.97</pub-id>
-      <fpage>97</fpage>
-      <lpage>111</lpage>
-    </element-citation>
-  </ref>
-</ref-list>
+</back>
+
+<sub-article article-type="notebook" id="nb-4-nb-article">
+<front-stub>
+<title-group>
+<article-title>ESS 330 Final Project</article-title>
+</title-group>
+<contrib-group>
+<contrib contrib-type="author" corresp="yes">
+<name>
+<surname>Myers</surname>
+<given-names>Leona</given-names>
+</name>
+<string-name>Leona Myers</string-name>
+
+<role vocab="https://credit.niso.org" vocab-term="writing – original
+draft" vocab-term-identifier="https://credit.niso.org/contributor-roles/writing-original-draft/">writing</role>
+<xref ref-type="aff" rid="aff-1-nb-article">a</xref>
+<xref ref-type="corresp" rid="cor-1-nb-article">&#x002A;</xref>
+</contrib>
+<contrib contrib-type="author">
+<name>
+<surname>Hall</surname>
+<given-names>Andie</given-names>
+</name>
+<string-name>Andie Hall</string-name>
+
+<role vocab="https://credit.niso.org" vocab-term="writing – original
+draft" vocab-term-identifier="https://credit.niso.org/contributor-roles/writing-original-draft/">writing</role>
+<xref ref-type="aff" rid="aff-1-nb-article">a</xref>
+</contrib>
+</contrib-group>
+<aff id="aff-1-nb-article">
+<institution-wrap>
+<institution>Colorado State University</institution>
+</institution-wrap>
+
+
+
+
+
+
+
+</aff>
+<author-notes>
+<corresp id="cor-1-nb-article"></corresp>
+</author-notes>
+</front-stub>
+
+<body>
+<sec id="stage-2-nb-article">
+  <title>Stage 2:</title>
+  <sec id="title-nb-article">
+    <title>Title</title>
+    <p>Title: Climate Change and Avian Response: Assessing the Effects
+    of CO₂ and Temperature on Wood Thrush Populations</p>
+  </sec>
+  <sec id="introduction-background-and-motivation-nb-article">
+    <title>Introduction, Background, and Motivation</title>
+    <p>Problem Overview: In recent decades, global climate change,
+    driven by increased carbon dioxide emissions, has contributed to
+    rising temperatures and disrupted ecological systems. Migratory bird
+    species, Wood Thrush (Hylocichla mustelina), are particularly
+    vulnerable to these changes due to their reliance on specific
+    environmental cues for migration, breeding, and survival. The Wood
+    Thursh is included on the Yellow Watch List for birds most at risk
+    of extinction, and it is one of the most prominent examples of
+    declining forest songbirds in North America (Cornell Lab of
+    Orinithology). Populations have declined by 1.3% per year, resulting
+    in a cumulative decline of approximately 5% between 1966 and 2019
+    (Cornell Lab of Ornithology). Declines in Wood Thrush populations
+    have been observed across North America, yet the extent to which
+    atmospheric CO2 levels and associated temperature changes contribute
+    to these declines remains unclear.</p>
+    <p>Data Overview: This research will investigate the effects of
+    rising atmospheric CO₂ concentrations and temperature changes on the
+    population dynamics of the Wood Thrush (Hylocichla mustelina), a
+    migratory songbird of conservation concern. The study will integrate
+    climate and ecological data from multiple large-scale sources:
+    temperature records from the National Weather Service, bird
+    abundance and distribution data from eBird and the North American
+    Breeding Bird Survey (BBS), and atmospheric CO₂ data from the Global
+    Carbon Budget.</p>
+  </sec>
+  <sec id="methods-overview-nb-article">
+    <title>Methods Overview:</title>
+    <list list-type="order">
+      <list-item>
+        <p>Data acquisition</p>
+        <list list-type="order">
+          <list-item>
+            <p>Climate Data: National Weather Service</p>
+          </list-item>
+          <list-item>
+            <p>CO₂ Data: Global Carbon Budget</p>
+          </list-item>
+          <list-item>
+            <p>Bird Observation Data: Cornell Lab’s eBird dataset</p>
+          </list-item>
+        </list>
+      </list-item>
+      <list-item>
+        <p>Data Cleaning and Processing</p>
+        <list list-type="order">
+          <list-item>
+            <p>Imported 7 different datasets from the states above that
+            recorded annual temperatures for each month between 1966 and
+            2019 and combined into one large dataset,
+            “All_Weather_Data.csv” </p>
+            <list list-type="order">
+              <list-item>
+                <p>Difficulties: The data was extremely time-consuming
+                to clean and process into a large dataset due to the
+                website’s pdf format for data exports. Using Excel’s
+                data from the file helped to import the data and allowed
+                for processing and cleaning of the data before being
+                inserted into the rProject data directory. </p>
+              </list-item>
+            </list>
+          </list-item>
+          <list-item>
+            <p>CO2 data was downloaded from the Global Carbon Budget and
+            then uploaded to Rstudio. No additional cleaning was
+            needed.</p>
+            <list list-type="order">
+              <list-item>
+                <p>Difficulties may arise from this data set only
+                including annual emission while other data sets include
+                monthly data.</p>
+              </list-item>
+            </list>
+          </list-item>
+          <list-item>
+            <p>Filtered Wood Thrush eBird data to between the years of
+            1966 and 2019, along with filtering the location of the bird
+            to these specific states: Pennsylvania, West Virginia,
+            Virginia, Kentucky, Ohio, Indiana, and Tennessee.
+            “Wood_Thrush_Raw.csv”</p>
+            <list list-type="order">
+              <list-item>
+                <p>Difficulties: The dataset is about 131.5 MB and
+                cannot be uploaded to the git repository, meaning data
+                sharing had to be done via email rather than sharing the
+                actual repo for us to pull and push. </p>
+              </list-item>
+            </list>
+          </list-item>
+        </list>
+      </list-item>
+    </list>
+    <list list-type="order">
+      <list-item>
+        <label>3.</label>
+        <p>Statistical Analysis</p>
+        <list list-type="order">
+          <list-item>
+            <p>Using the multiple datasets to account for temperature,
+            CO2, and observations, we created multiple machine learning
+            models (Linear Regression and Random Forest) to identify the
+            model of best fit. Creating a separate database to identify
+            the first observations of the Wood Thrush per year with a
+            correlation between the average temperature for that month
+            of the year with the first observation of that year can help
+            model the correlation between average temperatures and the
+            arrival date the species. </p>
+          </list-item>
+        </list>
+      </list-item>
+      <list-item>
+        <label>4.</label>
+        <p>Visualization</p>
+        <list list-type="order">
+          <list-item>
+            <p>Creating plots for the relationship between CO2,
+            Temperature, and Observations includes a scatter plot to
+            identify where bird observations (based on DayofYear) align
+            with average temperatures for specific time periods. </p>
+          </list-item>
+        </list>
+      </list-item>
+    </list>
+  </sec>
+  <sec id="citations-nb-article">
+    <title>Citations</title>
+    <p>Cornell Lab of Ornithology. (n.d.). Wood Thrush Life History, All
+    About Birds. All About Birds. Retrieved April 10, 2025, from
+    https://www.allaboutbirds.org/guide/Wood_Thrush/lifehistory</p>
+  </sec>
+  <sec id="exploring-the-data-nb-article">
+    <title>Exploring the Data</title>
+    <sec specific-use="notebook-content">
+    <code language="r script">library(tidyverse)</code>
+    <boxed-text>
+      <preformat>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.4     ✔ readr     2.1.5
+✔ forcats   1.0.0     ✔ stringr   1.5.1
+✔ ggplot2   3.5.1     ✔ tibble    3.2.1
+✔ lubridate 1.9.4     ✔ tidyr     1.3.1
+✔ purrr     1.0.2     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</preformat>
+    </boxed-text>
+    <code language="r script">library(here)</code>
+    <boxed-text>
+      <preformat>here() starts at C:/Users/myersl3/OneDrive - Rensselaer Polytechnic Institute/Documents/leonamyers/github/Final-Project-330</preformat>
+    </boxed-text>
+    <code language="r script">library(readr)</code>
+    </sec>
+    <p>CO2 data:</p>
+    <p>Description: The dataset spans 54 years, from 1966 to the most
+    recent year available. Each entry includes the total CO₂ emissions
+    for North America in a given year. No cleaning is needed.</p>
+    <sec specific-use="notebook-content">
+    <code language="r script">co2_data &lt;- read_csv(here(&quot;data&quot;, &quot;annual-co2-emissions-per-country.csv&quot;))</code>
+    <boxed-text>
+      <preformat>Rows: 54 Columns: 4
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: &quot;,&quot;
+chr (1): Entity
+dbl (2): Year, Annual CO₂ emissions
+lgl (1): Code
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</preformat>
+    </boxed-text>
+    </sec>
+    <sec specific-use="notebook-content">
+    <code language="r script">ggplot(co2_data, aes(x = Year, y = `Annual CO₂ emissions`)) +
+  geom_line(color = &quot;darkred&quot;, size = 1.2) +
+  geom_point(color = &quot;black&quot;, size = 2) +
+  labs(
+    title = &quot;Total CO₂ Emissions in the US&quot;,
+    x = &quot;Year&quot;,
+    y = &quot;Total CO₂ Emissions (metric tons)&quot;
+  ) +
+  theme_minimal(base_size = 14)</code>
+    <boxed-text>
+      <preformat>Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
+ℹ Please use `linewidth` instead.</preformat>
+    </boxed-text>
+    <graphic mimetype="image" mime-subtype="png" xlink:href="index_files/figure-jats/unnamed-chunk-3-1.png" />
+    </sec>
+    <sec id="ebird-data-nb-article">
+      <title>eBird Data:</title>
+      <p>Description: The data includes Woodthrush observations from the
+      United States in Pennsylvania, West Virginia, Virginia, Kentucky,
+      Ohio, Indiana, Tennessee, recorded at different levels of
+      granularity. The observations span from 1966 to 2019. There is
+      additional information on the number of individuals observed,
+      location, and behavioral codes. Some cleaning was done to filter
+      for specific locations.</p>
+      <sec specific-use="notebook-content">
+      <code language="r script">woodthrush_data &lt;- read_csv(here(&quot;data&quot;, &quot;Wood_Thrush.csv&quot;))</code>
+      <boxed-text>
+        <preformat>New names:
+Rows: 301512 Columns: 27
+── Column specification
+──────────────────────────────────────────────────────── Delimiter: &quot;,&quot; chr
+(6): COUNTRY, COUNTRY CODE, STATE, COUNTY, OBSERVATION COUNT, OBSERVATI... dbl
+(2): LATITUDE, LONGITUDE lgl (19): ...6, ...10, ...11, ...12, ...13, ...14,
+...15, ...16, ...17, ...1...
+ℹ Use `spec()` to retrieve the full column specification for this data. ℹ
+Specify the column types or set `show_col_types = FALSE` to quiet this message.
+• `` -&gt; `...6`
+• `` -&gt; `...10`
+• `` -&gt; `...11`
+• `` -&gt; `...12`
+• `` -&gt; `...13`
+• `` -&gt; `...14`
+• `` -&gt; `...15`
+• `` -&gt; `...16`
+• `` -&gt; `...17`
+• `` -&gt; `...18`
+• `` -&gt; `...19`
+• `` -&gt; `...20`
+• `` -&gt; `...21`
+• `` -&gt; `...22`
+• `` -&gt; `...23`
+• `` -&gt; `...24`
+• `` -&gt; `...25`
+• `` -&gt; `...26`
+• `` -&gt; `...27`</preformat>
+      </boxed-text>
+      </sec>
+      <sec specific-use="notebook-content">
+      <code language="r script">library(dplyr)
+library(lubridate)
+
+woodthrush_yearly &lt;- woodthrush_data %&gt;%
+  mutate(
+    observation_date = mdy(`OBSERVATION DATE`),  
+    year = year(observation_date),
+    `OBSERVATION COUNT` = as.numeric(`OBSERVATION COUNT`)  
+  ) %&gt;%
+  group_by(year) %&gt;%
+  summarize(total_observations = sum(`OBSERVATION COUNT`, na.rm = TRUE))</code>
+      <boxed-text>
+        <preformat>Warning: There was 1 warning in `mutate()`.
+ℹ In argument: `OBSERVATION COUNT = as.numeric(`OBSERVATION COUNT`)`.
+Caused by warning:
+! NAs introduced by coercion</preformat>
+      </boxed-text>
+      </sec>
+      <sec specific-use="notebook-content">
+      <code language="r script">first_observation &lt;- woodthrush_data %&gt;%
+  mutate(
+    observation_date = mdy(`OBSERVATION DATE`),  
+    observation_year = year(observation_date)
+  ) %&gt;%
+  group_by(observation_year) %&gt;%
+  slice_min(observation_date, with_ties = FALSE) %&gt;%
+  mutate(
+    DayOfYear = yday(observation_date)
+  )
+
+ggplot(first_observation, aes(x = observation_year, y = DayOfYear)) +
+  geom_point(aes(color = observation_year), size = 3, alpha = 0.7) +
+  geom_line(color = &quot;black&quot;, alpha = 0.3, size = 1.2) + 
+  scale_color_viridis_c(option = &quot;magma&quot;, begin = 0.2, end = 0.8) + 
+  scale_y_continuous(
+    breaks = seq(0, 365, by = 30),
+    labels = function(x) format(as.Date(x, origin = &quot;1970-01-01&quot;), &quot;%b %d&quot;)
+  ) +
+  labs(
+    x = &quot;Year&quot;, 
+    y = &quot;Day of Year (First Observation)&quot;, 
+    title = &quot;First Wood Thrush Observation per Year&quot;
+  ) +
+  theme_minimal() +
+  theme(
+    legend.position = &quot;right&quot;, 
+    text = element_text(size = 14), 
+    plot.title = element_text(size = 16, face = &quot;bold&quot;, hjust = 0.5)
+  )</code>
+      <graphic mimetype="image" mime-subtype="png" xlink:href="index_files/figure-jats/unnamed-chunk-6-1.png" />
+      </sec>
+      <sec id="test-linear-regression-nb-article">
+        <title>Test: Linear Regression</title>
+        <sec specific-use="notebook-content">
+        <code language="r script">model &lt;- lm(DayOfYear ~ observation_year, data = first_observation)
+summary(model)</code>
+        <boxed-text>
+          <preformat>
+Call:
+lm(formula = DayOfYear ~ observation_year, data = first_observation)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-94.378   1.369   5.287   8.700  13.841 
+
+Coefficients:
+                 Estimate Std. Error t value Pr(&gt;|t|)  
+(Intercept)      677.1175   357.3052   1.895   0.0636 .
+observation_year  -0.2935     0.1793  -1.637   0.1077  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 20.54 on 52 degrees of freedom
+Multiple R-squared:  0.04901,   Adjusted R-squared:  0.03072 
+F-statistic:  2.68 on 1 and 52 DF,  p-value: 0.1077</preformat>
+        </boxed-text>
+        </sec>
+        <p>Results: The analysis suggests a slight trend toward Wood
+        Thrushes arriving slightly earlier over time (about 0.29 days
+        per year), but this trend is not statistically significant (p =
+        0.1077).</p>
+      </sec>
+    </sec>
+    <sec id="climateweather-data-nb-article">
+      <title>Climate/Weather Data:</title>
+      <p>Description: This data set contains the annual average
+      temperature records for the states of Pennsylvania, West Virginia,
+      Virginia, Kentucky, Ohio, Indiana, and Tennessee, from 1966-2019.
+      It includes monthly temperature data for each year, from January
+      through December, along with an annual average temperature. This
+      data set was heavily cleaned in excel.</p>
+      <sec specific-use="notebook-content">
+      <code language="r script">weather_data &lt;-  read_csv(here(&quot;data&quot;, &quot;AllWeatherData.csv&quot;))</code>
+      <boxed-text>
+        <preformat>Rows: 378 Columns: 15
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: &quot;,&quot;
+chr  (1): STATE
+dbl (14): Year, Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec, ...
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</preformat>
+      </boxed-text>
+      </sec>
+      <sec id="test-linear-regression-1-nb-article">
+        <title>Test: linear regression</title>
+        <sec specific-use="notebook-content">
+        <code language="r script">library(dplyr)
+library(tidyr)
+library(ggplot2)
+
+weather_long &lt;- weather_data %&gt;%
+  pivot_longer(
+    cols = Jan:Dec,
+    names_to = &quot;Month&quot;,
+    values_to = &quot;Temp&quot;
+  ) %&gt;%
+  mutate(
+    Month = factor(Month, levels = month.abb),
+    Year = as.numeric(Year),
+    Temp = as.numeric(Temp)
+  )
+temp_trend &lt;- lm(Temp ~ Year, data = weather_long)
+summary(temp_trend)</code>
+        <boxed-text>
+          <preformat>
+Call:
+lm(formula = Temp ~ Year, data = weather_long)
+
+Residuals:
+   Min     1Q Median     3Q    Max 
+-44.20 -15.85  -1.25  13.18 760.29 
+
+Coefficients:
+              Estimate Std. Error t value Pr(&gt;|t|)   
+(Intercept) -149.17947   71.54617  -2.085  0.03712 * 
+Year           0.10297    0.03591   2.868  0.00415 **
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 37.69 on 4534 degrees of freedom
+Multiple R-squared:  0.001811,  Adjusted R-squared:  0.00159 
+F-statistic: 8.224 on 1 and 4534 DF,  p-value: 0.004152</preformat>
+        </boxed-text>
+        </sec>
+        <p>Results: Our results indicate a statistically significant
+        warming trend over time, with temperatures increasing by ~0.10
+        degrees per year.</p>
+      </sec>
+    </sec>
+  </sec>
+</sec>
+</body>
+
+
+
+<back>
 </back>
 
 
+</sub-article>
 
 </article>
