@@ -1,0 +1,255 @@
+---
+title: "Methods, Results, and Discussion"
+authors:
+  - name: Leona Myers
+    affiliation: Colorado State University
+    roles: writing
+    corresponding: true
+  - name: Andie Hall
+    affiliation: Colorado State University
+    roles: writing
+bibliography: references.bib
+csl: apa.csl
+execute: 
+  echo: true
+---
+
+# Preliminary: Exploring the Data
+```{r}
+library(tidyverse)
+library(here)
+library(readr)
+```
+
+## CO2 data:
+```{r}
+Annua_CO2_Emissions <- read_csv(here("data", "annual-co2-emissions-per-country.csv"))
+```
+
+## Weather Data:
+```{r}
+AllWeatherData <- read_csv(here("data", "AllWeatherData.csv"))
+```
+
+## eBird Data:
+```{r}
+Wood_Thrush <- read_csv(here("data", "Wood_Thrush.csv"))
+```
+
+# Data Manipulation
+
+## Data Prep
+```{r}
+library(tidymodels)
+library(tidyverse)
+library(lubridate)
+library(zoo)
+```
+
+```{r}
+Wood_Thrush <- Wood_Thrush |>
+  select(COUNTRY, `COUNTRY CODE`, STATE, `OBSERVATION COUNT`, `OBSERVATION DATE`, LATITUDE, LONGITUDE) |>
+  mutate(`OBSERVATION DATE` = as.Date(`OBSERVATION DATE`, format = "%m/%d/%Y"),
+         Year = year(`OBSERVATION DATE`))
+
+Annual_Weather <- AllWeatherData |>
+  select(Year, Annual, STATE)
+
+Annua_CO2_Emissions <- Annua_CO2_Emissions |>
+  select(Year, `Annual CO₂ emissions`)
+
+Main_Data <- Wood_Thrush |>
+  inner_join(Annual_Weather, by = c("Year", "STATE")) |>
+  inner_join(Annua_CO2_Emissions, by = "Year") |>
+  mutate(DayOfYear = yday(`OBSERVATION DATE`)) |>
+  drop_na(Annual, `Annual CO₂ emissions`, DayOfYear)
+```
+
+## Creating Data sets
+```{r}
+Spring_Arrival <- Main_Data |>
+  group_by(year(`OBSERVATION DATE`)) |>
+  slice_min(`OBSERVATION DATE`, with_ties = FALSE)
+
+Fall_Departure <- Main_Data |>
+  group_by(year(`OBSERVATION DATE`)) |>
+  slice_max(`OBSERVATION DATE`, with_ties = FALSE)
+```
+
+## Splitting and CV folds
+```{r}
+set.seed(123)
+WT_split <- initial_split(Main_Data, prop = 0.8)
+WT_train <- training(WT_split)
+WT_test  <- testing(WT_split)
+WT_cv <- vfold_cv(WT_train, v = 10)
+```
+
+## Recipe
+```{r}
+CO2_rec <- recipe(formula = DayOfYear ~ `Annual CO₂ emissions`, data = WT_train) |>
+  step_log(all_predictors()) |>
+  step_naomit(all_predictors(), all_outcomes())
+
+Temp_rec <- recipe(formula = DayOfYear ~ Annual, data = WT_train) |>
+  step_log(all_predictors()) |>
+  step_naomit(all_predictors(), all_outcomes())
+```
+
+## Define Models
+```{r}
+lm_model <- linear_reg() |> set_engine("lm") |> set_mode("regression")
+rf_model <- rand_forest() |> set_engine("ranger") |> set_mode("regression")
+xg_model <- boost_tree() |> set_engine("xgboost") |> set_mode("regression")
+```
+
+## CO2 Workflows
+```{r}
+wf_lm_CO2 <- workflow() |>
+  add_model(lm_model) |>
+  add_recipe(CO2_rec)
+
+wf_rf_CO2 <- workflow() |>
+  add_model(rf_model) |>
+  add_recipe(CO2_rec)
+
+wf_xg_CO2 <- workflow() |>
+  add_model(xg_model) |>
+  add_recipe(CO2_rec)
+```
+
+## Temperature Workflows
+```{r}
+wf_lm_Temp <- workflow() |>
+  add_model(lm_model) |>
+  add_recipe(Temp_rec)
+
+wf_rf_Temp <- workflow() |>
+  add_model(rf_model) |>
+  add_recipe(Temp_rec)
+
+wf_xg_Temp <- workflow() |>
+  add_model(xg_model) |>
+  add_recipe(Temp_rec)
+```
+
+## CO2: Linear Model
+```{r}
+res_lm_CO2 <- fit_resamples(
+  wf_lm_CO2,
+  resamples = WT_cv,
+  metrics = metric_set(rmse, rsq),
+  control = control_resamples(save_pred = TRUE)
+)
+```
+
+## CO2: Random Forest
+```{r}
+res_rf_CO2 <- fit_resamples(
+  wf_rf_CO2,
+  resamples = WT_cv,
+  metrics = metric_set(rmse, rsq),
+  control = control_resamples(save_pred = TRUE)
+)
+```
+
+## CO2: Boosted Tree
+```{r}
+res_xg_CO2 <- fit_resamples(
+  wf_xg_CO2,
+  resamples = WT_cv,
+  metrics = metric_set(rmse, rsq),
+  control = control_resamples(save_pred = TRUE)
+)
+```
+
+## Temp: Linear Model
+```{r}
+res_lm_Temp <- fit_resamples(
+  wf_lm_Temp,
+  resamples = WT_cv,
+  metrics = metric_set(rmse, rsq),
+  control = control_resamples(save_pred = TRUE)
+)
+```
+
+## Temp: Random Forest
+```{r}
+res_rf_Temp <- fit_resamples(
+  wf_rf_Temp,
+  resamples = WT_cv,
+  metrics = metric_set(rmse, rsq),
+  control = control_resamples(save_pred = TRUE)
+)
+```
+
+## Temp: Boosted Tree
+```{r}
+res_xg_Temp <- fit_resamples(
+  wf_xg_Temp,
+  resamples = WT_cv,
+  metrics = metric_set(rmse, rsq),
+  control = control_resamples(save_pred = TRUE)
+)
+```
+
+## Model Performances
+```{r}
+all_results <- bind_rows(
+  collect_metrics(res_lm_CO2) |> mutate(Model = "LM - CO2"),
+  collect_metrics(res_rf_CO2) |> mutate(Model = "RF - CO2"),
+  collect_metrics(res_xg_CO2) |> mutate(Model = "XG - CO2"),
+  collect_metrics(res_lm_Temp) |> mutate(Model = "LM - Temp"),
+  collect_metrics(res_rf_Temp) |> mutate(Model = "RF - Temp"),
+  collect_metrics(res_xg_Temp) |> mutate(Model = "XG - Temp")
+)
+
+all_results |> 
+  filter(.metric == "rmse") |> 
+  arrange(mean)
+```
+
+## Fit to Full Model (Spring and Fall)
+```{r}
+rf_temp_spring_fit <- fit(wf_rf_Temp, data = Spring_Arrival)
+
+rf_temp_fall_fit <- fit(wf_rf_Temp, data = Fall_Departure)
+```
+
+## Plots and Predictions
+```{r}
+spring_preds <- predict(rf_temp_spring_fit, Spring_Arrival) |>
+  bind_cols(Spring_Arrival)
+
+fall_preds <- predict(rf_temp_fall_fit, Fall_Departure) |>
+  bind_cols(Fall_Departure)
+```
+
+```{r}
+library(patchwork) 
+
+p1 <- ggplot(spring_preds, aes(x = .pred, y = DayOfYear)) +
+  geom_point(alpha = 0.5, color = "darkblue") +
+  geom_smooth(method = "lm", se = FALSE, color = "black", linetype = "dashed") +
+  theme_minimal() +
+  labs(title = "Spring Arrival: Predicted vs Actual DOY",
+       x = "Predicted DOY", y = "Actual DOY")
+
+p2 <- ggplot(fall_preds, aes(x = .pred, y = DayOfYear)) +
+  geom_point(alpha = 0.5, color = "firebrick") +
+  geom_smooth(method = "lm", se = FALSE, color = "black", linetype = "dashed") +
+  theme_minimal() +
+  labs(title = "Fall Departure: Predicted vs Actual DOY",
+       x = "Predicted DOY", y = "Actual DOY")
+
+
+p1 + p2
+```
+
+## Results
+
+To examine the relationship between temperature and Wood Thrush migration phenology, we applied multiple modeling approaches (linear regression, random forest, and boosted trees) to predict the day of year of observations using annual temperature and CO₂ emissions as predictors. Among all models tested, the random forest model using annual temperature consistently performed best, showing the lowest root mean square error across 10-fold cross-validation.
+
+We then used the RF-Temp model to separately predict spring arrival and fall departure dates. For spring arrival, the model demonstrated high accuracy, with predicted day of year closely aligning with actual arrival dates. This tight clustering around the 1:1 line indicates a strong relationship between annual temperature and early-season migratory behavior. While, predictions for fall departure showed greater variability and lower predictive performance suggesting that temperature is a less reliable cue for modeling autumn migration timing. These results suggest that spring migration is more tightly coupled to temperature trends. However, fall departure appears to be influenced by a more complex set of cues, potentially.
+
+## Discussion
