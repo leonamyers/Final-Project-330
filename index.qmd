@@ -15,7 +15,7 @@ execute:
 
 ## Title
 
-Title: Climate Change and Avian Response: Assessing the Effects of CO₂ and Temperature on Wood Thrush Populations
+Title of Paper: Climate Change and Avian Response: Assessing the Effects of CO₂ and Temperature on Wood Thrush Populations
 
 ## Introduction:
 
