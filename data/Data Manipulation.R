@@ -2,6 +2,7 @@
 library(tidymodels)
 library(tidyverse)
 library(lubridate)
+library(zoo)
 
 # Data prep (simplified and clean)
 Wood_Thrush <- Wood_Thrush |>
