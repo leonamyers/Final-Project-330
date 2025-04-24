@@ -2,6 +2,10 @@ project:
   type: manuscript
   output-dir: docs
 
+title: "Lab 9"
+bibliography: references.bib
+csl: apa.csl
+
 manuscript:
   article: index.qmd
 
@@ -12,11 +16,7 @@ format:
   docx: default
   jats: default
 
-  # (other formats)
-  # pdf: default
-
 execute:
   freeze: true
 
-
-
+editor: visual

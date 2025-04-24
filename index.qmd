@@ -1,5 +1,5 @@
 ---
-title: ESS 330 Final Project
+title: Final Project
 authors:
   - name: Leona Myers
     affiliation: Colorado State University
@@ -8,9 +8,10 @@ authors:
   - name: Andie Hall
     affiliation: Colorado State University
     roles: writing
-bibliography: references.bib
 execute: 
   echo: true
+  
+bibliography: references.bib
 ---
 
 ## Title
@@ -19,11 +20,11 @@ Title of Paper: Climate Change and Avian Response: Assessing the Effects of CO�
 
 ## Introduction:
 
-Problem Overview: In recent decades, global climate change, driven by increased carbon dioxide emissions, has contributed to rising temperatures and disrupted ecological systems (@article{noaa2024climate). Many migratory bird species, such as the subject of this study, the Wood Thrush (Hylocichla mustelina), are particularly vulnerable to these changes due to their reliance on specific environmental cues for migration, breeding, and survival. The Wood Thrush is included on the Yellow Watch List for birds most at risk of extinction, and it is one of the most prominent examples of declining forest songbirds in North America (@article{cornell2024woodthrush). Populations have declined by 1.3% per year, resulting in a cumulative decline of approximately 50% between 1966 and 2019 (@article{cornell2024woodthrush). Declines in Wood Thrush populations have been observed across North America, yet the extent to which atmospheric CO2 levels and associated temperature changes contribute to these declines remains unclear. 
+Problem Overview: In recent decades, global climate change, driven by increased carbon dioxide emissions, has contributed to rising temperatures and disrupted ecological systems (@noaa2024climate). Many migratory bird species, such as the subject of this study, the Wood Thrush (Hylocichla mustelina), are particularly vulnerable to these changes due to their reliance on specific environmental cues for migration, breeding, and survival. The Wood Thrush is included on the Yellow Watch List for birds most at risk of extinction, and it is one of the most prominent examples of declining forest songbirds in North America (@cornell2024woodthrush). Populations have declined by 1.3% per year, resulting in a cumulative decline of approximately 50% between 1966 and 2019 (@cornell2024woodthrush). Declines in Wood Thrush populations have been observed across North America, yet the extent to which atmospheric CO2 levels and associated temperature changes contribute to these declines remains unclear. 
 
 ## Materials
 
-This research will investigate the effects of atmospheric CO₂ concentrations and temperature changes on the population dynamics of the Wood Thrush (Hylocichla mustelina), a migratory songbird of conservation concern. The study integrates climate and ecological data from multiple large-scale sources: temperature records from the National Weather Service, (@article{noaa2024climate) bird abundance and distribution data from Cornell’s eBird Dataset (@article{cornell2024woodthrush), and atmospheric CO₂ data from the Global Carbon Budget (@article{friedlingstein2023global). Using these data sources, we can create a model to help determine the effect of these variables on the arrival and departure dates of these species along the mid-northeastern coast of the United States from 1966 to 2019.
+This research will investigate the effects of atmospheric CO₂ concentrations and temperature changes on the population dynamics of the Wood Thrush (Hylocichla mustelina), a migratory songbird of conservation concern. The study integrates climate and ecological data from multiple large-scale sources: temperature records from the National Weather Service, (@noaa2024climate) bird abundance and distribution data from Cornell’s eBird Dataset (@cornell2024woodthrush), and atmospheric CO₂ data from the Global Carbon Budget (@friedlingstein2023global). Using these data sources, we can create a model to help determine the effect of these variables on the arrival and departure dates of these species along the mid-northeastern coast of the United States from 1966 to 2019.
 
 ## Methods Overview:
 

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-    <title>ESS 330 Final Project</title>
+    <title>Final Project</title>
     <style>
       code{white-space: pre-wrap;}
       span.smallcaps{font-variant: small-caps;}
@@ -53,7 +53,27 @@
       @media screen {
       pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
       }
-    </style>
+      /* CSS for citations */
+      div.csl-bib-body { }
+      div.csl-entry {
+        clear: both;
+        margin-bottom: 0em;
+      }
+      .hanging-indent div.csl-entry {
+        margin-left:2em;
+        text-indent:-2em;
+      }
+      div.csl-left-margin {
+        min-width:2em;
+        float:left;
+      }
+      div.csl-right-inline {
+        margin-left:2em;
+        padding-left:1em;
+      }
+      div.csl-indent {
+        margin-left: 2em;
+      }    </style>
 
     <style>
       body.hypothesis-enabled #quarto-embed-header {
@@ -165,7 +185,7 @@
     document.body.classList.add('hypothesis-enabled');
   });
 </script>  
-      <meta name="citation_title" content="ESS 330 Final Project">
+      <meta name="citation_title" content="Final Project">
 <meta name="citation_author" content="Leona Myers">
 <meta name="citation_author" content="Andie Hall">
 <meta name="citation_language" content="en">
@@ -177,7 +197,7 @@
 <meta name="citation_reference" content="citation_title=Wildlife and climate change (u.s. National park service);,citation_author=U.S. Department of the Interior;,citation_fulltext_html_url=https://www.nps.gov/articles/000/wildlife-climateimpact.html;">
 <meta name="citation_reference" content="citation_title=Wood thrush;,citation_author=H. Powell;,citation_fulltext_html_url=https://www.stateofthebirds.org/2016/resources/species-abundance-maps/wood-thrush/;">
 <meta name="citation_reference" content="citation_title=Wood thrush life history;,citation_author=Cornell Lab Ornithology;,citation_fulltext_html_url=https://www.allaboutbirds.org/guide/Wood_Thrush/lifehistory;">
-<meta name="citation_reference" content="citation_title=Global carbon budget 2023;,citation_author=et al. Friedlingstein;">
+<meta name="citation_reference" content="citation_title=Global carbon budget 2023;,citation_author=Pierre Friedlingstein;,citation_author=others;,citation_publication_date=2023;,citation_cover_date=2023;,citation_year=2023;,citation_doi=10.5194/essd-15-123-2023;,citation_volume=15;,citation_journal_title=Earth System Science Data;">
 </head>
 
   <body class="quarto-notebook">
@@ -192,7 +212,7 @@
      <header id="title-block-header" class="quarto-title-block default toc-left page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">ESS 330 Final Project</h1>
+      <h1 class="title">Final Project</h1>
           </div>
 
     
@@ -279,15 +299,15 @@
 
        <section id="title" class="level2">
 <h2 class="anchored" data-anchor-id="title">Title</h2>
-<p>Title: Climate Change and Avian Response: Assessing the Effects of CO₂ and Temperature on Wood Thrush Populations</p>
+<p>Title of Paper: Climate Change and Avian Response: Assessing the Effects of CO₂ and Temperature on Wood Thrush Populations</p>
 </section>
 <section id="introduction" class="level2">
 <h2 class="anchored" data-anchor-id="introduction">Introduction:</h2>
-<p>Problem Overview: In recent decades, global climate change, driven by increased carbon dioxide emissions, has contributed to rising temperatures and disrupted ecological systems (<span class="citation" data-cites="article">(<a href="#ref-article" role="doc-biblioref"><strong>article?</strong></a>)</span>{noaa2024climate). Many migratory bird species, such as the subject of this study, the Wood Thrush (Hylocichla mustelina), are particularly vulnerable to these changes due to their reliance on specific environmental cues for migration, breeding, and survival. The Wood Thrush is included on the Yellow Watch List for birds most at risk of extinction, and it is one of the most prominent examples of declining forest songbirds in North America (<span class="citation" data-cites="article">(<a href="#ref-article" role="doc-biblioref"><strong>article?</strong></a>)</span>{cornell2024woodthrush). Populations have declined by 1.3% per year, resulting in a cumulative decline of approximately 50% between 1966 and 2019 (<span class="citation" data-cites="article">(<a href="#ref-article" role="doc-biblioref"><strong>article?</strong></a>)</span>{cornell2024woodthrush). Declines in Wood Thrush populations have been observed across North America, yet the extent to which atmospheric CO2 levels and associated temperature changes contribute to these declines remains unclear.&nbsp;</p>
+<p>Problem Overview: In recent decades, global climate change, driven by increased carbon dioxide emissions, has contributed to rising temperatures and disrupted ecological systems (<span class="citation" data-cites="noaa2024climate">NOAA National Centers for Environmental Information (<a href="#ref-noaa2024climate" role="doc-biblioref">2024</a>)</span>). Many migratory bird species, such as the subject of this study, the Wood Thrush (Hylocichla mustelina), are particularly vulnerable to these changes due to their reliance on specific environmental cues for migration, breeding, and survival. The Wood Thrush is included on the Yellow Watch List for birds most at risk of extinction, and it is one of the most prominent examples of declining forest songbirds in North America (<span class="citation" data-cites="cornell2024woodthrush">Ornithology (<a href="#ref-cornell2024woodthrush" role="doc-biblioref">n.d.</a>)</span>). Populations have declined by 1.3% per year, resulting in a cumulative decline of approximately 50% between 1966 and 2019 (<span class="citation" data-cites="cornell2024woodthrush">Ornithology (<a href="#ref-cornell2024woodthrush" role="doc-biblioref">n.d.</a>)</span>). Declines in Wood Thrush populations have been observed across North America, yet the extent to which atmospheric CO2 levels and associated temperature changes contribute to these declines remains unclear.&nbsp;</p>
 </section>
 <section id="materials" class="level2">
 <h2 class="anchored" data-anchor-id="materials">Materials</h2>
-<p>This research will investigate the effects of atmospheric CO₂ concentrations and temperature changes on the population dynamics of the Wood Thrush (Hylocichla mustelina), a migratory songbird of conservation concern. The study integrates climate and ecological data from multiple large-scale sources: temperature records from the National Weather Service, (<span class="citation" data-cites="article">(<a href="#ref-article" role="doc-biblioref"><strong>article?</strong></a>)</span>{noaa2024climate) bird abundance and distribution data from Cornell’s eBird Dataset (<span class="citation" data-cites="article">(<a href="#ref-article" role="doc-biblioref"><strong>article?</strong></a>)</span>{cornell2024woodthrush), and atmospheric CO₂ data from the Global Carbon Budget (<span class="citation" data-cites="article">(<a href="#ref-article" role="doc-biblioref"><strong>article?</strong></a>)</span>{friedlingstein2023global). Using these data sources, we can create a model to help determine the effect of these variables on the arrival and departure dates of these species along the mid-northeastern coast of the United States from 1966 to 2019.</p>
+<p>This research will investigate the effects of atmospheric CO₂ concentrations and temperature changes on the population dynamics of the Wood Thrush (Hylocichla mustelina), a migratory songbird of conservation concern. The study integrates climate and ecological data from multiple large-scale sources: temperature records from the National Weather Service, (<span class="citation" data-cites="noaa2024climate">NOAA National Centers for Environmental Information (<a href="#ref-noaa2024climate" role="doc-biblioref">2024</a>)</span>) bird abundance and distribution data from Cornell’s eBird Dataset (<span class="citation" data-cites="cornell2024woodthrush">Ornithology (<a href="#ref-cornell2024woodthrush" role="doc-biblioref">n.d.</a>)</span>), and atmospheric CO₂ data from the Global Carbon Budget (<span class="citation" data-cites="friedlingstein2023global">Friedlingstein et al. (<a href="#ref-friedlingstein2023global" role="doc-biblioref">2023</a>)</span>). Using these data sources, we can create a model to help determine the effect of these variables on the arrival and departure dates of these species along the mid-northeastern coast of the United States from 1966 to 2019.</p>
 </section>
 <section id="methods-overview" class="level2">
 <h2 class="anchored" data-anchor-id="methods-overview">Methods Overview:</h2>
@@ -458,7 +478,7 @@ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 ✖ dplyr::lag()      masks stats::lag()
 ✖ yardstick::spec() masks readr::spec()
 ✖ recipes::step()   masks stats::step()
-• Search for functions across packages at https://www.tidymodels.org/find/</code></pre>
+• Dig deeper into tidy modeling with R at https://www.tmwr.org</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
@@ -874,6 +894,17 @@ Attaching package: 'zoo'</code></pre>
 <li><p>Interpretation notes on clustering trends</p></li>
 </ul>
 <p>These visualizations confirm that the <strong>relationship between climate variables and migration phenology is strong</strong>, particularly for temperature and spring migration events.</p>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list">
+<div id="ref-friedlingstein2023global" class="csl-entry" role="listitem">
+Friedlingstein, P. et al. (2023). Global carbon budget 2023. <em>Earth System Science Data</em>, <em>15</em>, 123–145. <a href="https://doi.org/10.5194/essd-15-123-2023">https://doi.org/10.5194/essd-15-123-2023</a>
+</div>
+<div id="ref-noaa2024climate" class="csl-entry" role="listitem">
+NOAA National Centers for Environmental Information. (2024). <em>Monthly global climate report for annual 2023</em>. <a href="https://www.ncei.noaa.gov/access/monitoring/monthly-report/global/202313">https://www.ncei.noaa.gov/access/monitoring/monthly-report/global/202313</a>
+</div>
+<div id="ref-cornell2024woodthrush" class="csl-entry" role="listitem">
+Ornithology, C. L. of. (n.d.). <em>Wood thrush life history</em>. <a href="https://www.allaboutbirds.org/guide/Wood_Thrush/lifehistory">https://www.allaboutbirds.org/guide/Wood_Thrush/lifehistory</a>
+</div>
+</div>
 </section>
 </section>
      </main>
@@ -1296,7 +1327,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
-</script>  </div> <!-- /content -->  <script>var lightboxQuarto = GLightbox({"selector":".lightbox","closeEffect":"zoom","loop":false,"openEffect":"zoom","descPosition":"bottom"});
+</script>  </div> <!-- /content -->  <script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","loop":false,"selector":".lightbox","descPosition":"bottom","openEffect":"zoom"});
 (function() {
   let previousOnload = window.onload;
   window.onload = () => {
