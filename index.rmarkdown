@@ -14,6 +14,10 @@ execute:
 bibliography: references.bib
 ---
 
+
+
+
+
 ## Title
 
 Title of Paper: Climate Change and Avian Response: Assessing the Effects of CO₂ and Temperature on Wood Thrush Populations
@@ -84,31 +88,67 @@ This research will investigate the effects of atmospheric CO₂ concentrations a
 
 ## Preliminary: Exploring the Data
 
+
+
+
+
 ```{r}
 library(tidyverse)
 library(here)
 library(readr)
 ```
 
+
+
+
+
 CO2 data:
+
+
+
+
 
 ```{r}
 Annua_CO2_Emissions <- read_csv(here("data", "annual-co2-emissions-per-country.csv"))
 ```
 
+
+
+
+
 Weather Data:
+
+
+
+
 
 ```{r}
 AllWeatherData <- read_csv(here("data", "AllWeatherData.csv"))
 ```
 
+
+
+
+
 eBird Data:
+
+
+
+
 
 ```{r}
 Wood_Thrush <- read_csv(here("data", "Wood_Thrush.csv"))
 ```
 
+
+
+
+
 ## Data Prep
+
+
+
+
 
 ```{r}
 library(tidymodels)
@@ -136,7 +176,15 @@ Main_Data <- Wood_Thrush |>
   drop_na(Annual, `Annual CO₂ emissions`, DayOfYear)
 ```
 
+
+
+
+
 ## Creating Data sets
+
+
+
+
 
 ```{r}
 Spring_Arrival <- Main_Data |>
@@ -148,7 +196,15 @@ Fall_Departure <- Main_Data |>
   slice_max(`OBSERVATION DATE`, with_ties = FALSE)
 ```
 
+
+
+
+
 ## Splitting and CV folds
+
+
+
+
 
 ```{r}
 set.seed(123)
@@ -158,7 +214,15 @@ WT_test  <- testing(WT_split)
 WT_cv <- vfold_cv(WT_train, v = 5)
 ```
 
+
+
+
+
 ## Recipe
+
+
+
+
 
 ```{r}
 CO2_rec <- recipe(formula = DayOfYear ~ `Annual CO₂ emissions`, data = WT_train) |>
@@ -171,7 +235,15 @@ Temp_rec <- recipe(formula = DayOfYear ~ Annual, data = WT_train) |>
  
 ```
 
+
+
+
+
 ## Define Models
+
+
+
+
 
 ```{r}
 lm_model <- linear_reg() |> set_engine("lm") |> set_mode("regression")
@@ -179,7 +251,15 @@ rf_model <- rand_forest(trees = 100) |> set_engine("ranger") |> set_mode("regres
 xg_model <- boost_tree() |> set_engine("xgboost") |> set_mode("regression")
 ```
 
+
+
+
+
 ## CO2 Workflows
+
+
+
+
 
 ```{r}
 wf_lm_CO2 <- workflow() |>
@@ -195,7 +275,15 @@ wf_xg_CO2 <- workflow() |>
   add_recipe(CO2_rec)
 ```
 
+
+
+
+
 ## Temperature Workflows
+
+
+
+
 
 ```{r}
 wf_lm_Temp <- workflow() |>
@@ -211,7 +299,15 @@ wf_xg_Temp <- workflow() |>
   add_recipe(Temp_rec)
 ```
 
+
+
+
+
 ## CO2: Linear Model
+
+
+
+
 
 ```{r}
 res_lm_CO2 <- fit_resamples(
@@ -222,7 +318,15 @@ res_lm_CO2 <- fit_resamples(
 )
 ```
 
+
+
+
+
 ## CO2: Random Forest
+
+
+
+
 
 ```{r}
 res_rf_CO2 <- fit_resamples(
@@ -233,7 +337,15 @@ res_rf_CO2 <- fit_resamples(
 )
 ```
 
+
+
+
+
 ## CO2: Boosted Tree
+
+
+
+
 
 ```{r}
 res_xg_CO2 <- fit_resamples(
@@ -244,7 +356,15 @@ res_xg_CO2 <- fit_resamples(
 )
 ```
 
+
+
+
+
 ## Temp: Linear Model
+
+
+
+
 
 ```{r}
 res_lm_Temp <- fit_resamples(
@@ -255,7 +375,15 @@ res_lm_Temp <- fit_resamples(
 )
 ```
 
+
+
+
+
 ## Temp: Random Forest
+
+
+
+
 
 ```{r}
 res_rf_Temp <- fit_resamples(
@@ -266,7 +394,15 @@ res_rf_Temp <- fit_resamples(
 )
 ```
 
+
+
+
+
 ## Temp: Boosted Tree
+
+
+
+
 
 ```{r}
 res_xg_Temp <- fit_resamples(
@@ -277,7 +413,15 @@ res_xg_Temp <- fit_resamples(
 )
 ```
 
+
+
+
+
 ## Model Performances
+
+
+
+
 
 ```{r}
 all_results <- bind_rows(
@@ -294,7 +438,15 @@ all_results |>
   arrange(mean)
 ```
 
+
+
+
+
 ## Fit to Full Model (Spring and Fall)
+
+
+
+
 
 ```{r}
 rf_temp_spring_fit <- fit(wf_rf_Temp, data = Spring_Arrival)
@@ -306,7 +458,15 @@ rf_CO2_spring_fit <- fit(wf_rf_CO2, data = Spring_Arrival)
 rf_CO2_fall_fit <- fit(wf_rf_CO2, data = Fall_Departure)
 ```
 
+
+
+
+
 ## Plots and Predictions
+
+
+
+
 
 ```{r}
 temp_spring_preds <- predict(rf_temp_spring_fit, Spring_Arrival) |>
@@ -364,9 +524,17 @@ p4 <- ggplot(CO2_fall_preds, aes(x = .pred, y = DayOfYear)) +
 p3 + p4
 ```
 
+
+
+
+
 ## **Results**
 
 To assess the relationship between climate variables and Wood Thrush migration phenology, we implemented and evaluated six machine learning models: linear regression, random forest, and XGBoost—each applied separately to CO₂ and temperature predictor datasets. Performance was measured using 5-fold cross-validation due to the size of the dataset and runtime constraints.
+
+
+
+
 
 ```{r}
 all_results <- bind_rows(
@@ -424,6 +592,10 @@ p4 <- ggplot(CO2_fall_preds, aes(x = .pred, y = DayOfYear)) +
 p3 + p4
 ```
 
+
+
+
+
 The **random forest model with temperature** as the predictor emerged as the strongest model across both spring arrival and fall departure dates, showing the **lowest RMSE** and **highest R² values**, indicating superior predictive performance and robustness.
 
 ### **Spring Arrival Predictions**
@@ -465,3 +637,4 @@ Each figure includes:
 -   Interpretation notes on clustering trends
 
 These visualizations confirm that the **relationship between climate variables and migration phenology is strong**, particularly for temperature and spring migration events.
+

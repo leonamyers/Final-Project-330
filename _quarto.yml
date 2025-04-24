@@ -11,6 +11,7 @@ manuscript:
 
 format:
   html:
+    self-contained: true
     comments:
       hypothesis: true
   docx: default
